@@ -21,12 +21,20 @@ class PostRepository implements PostRepositoryInterface
     {
         return Post::findOrFail($id);
     }
-    
+
     /**
      * 新しい投稿を作成
      */
     public function createPost(array $data)
     {
         return Post::create($data);
+    }
+
+    public function updatePostStatus($id, $isPublished)
+    {
+        $post = Post::findOrFail($id);
+        $post->is_published = $isPublished;
+        $post->save();
+        return $post;
     }
 }

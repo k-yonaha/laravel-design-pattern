@@ -18,4 +18,9 @@ interface PostRepositoryInterface
      * 新しい投稿を作成
      */
     public function createPost(array $data);
+
+    /**
+     * 公開・非公開設定
+     */
+    public function updatePostStatus($id, $isPublished);
 }

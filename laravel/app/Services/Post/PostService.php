@@ -27,4 +27,9 @@ class PostService
     {
         return $this->postRepository->createPost($data);
     }
+
+    public function updateStatus($id,$isPublished)
+    {
+        return $this->postRepository->updatePostStatus($id,$isPublished);
+    }
 }

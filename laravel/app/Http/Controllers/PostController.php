@@ -32,4 +32,14 @@ class PostController extends Controller
         $this->postService->createPost($data);
         return redirect()->route('posts.index');
     }
+
+    public function updateStatus($id,Request $request)
+    {
+        $data = $request->validate([
+            'is_published' => 'required|boolean',  // 公開・非公開のバリデーション
+        ]);
+
+        $this->postService->updateStatus($id, $data['is_published']);  // 公開・非公開を切り替え
+        return redirect()->back()->with('success', 'ステータスを更新しました！');
+    }
 }
